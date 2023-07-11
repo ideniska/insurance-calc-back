@@ -1,0 +1,1 @@
+web: python manage.py makemigrations & python manage.py migrate & gunicorn core_conf.wsgi --timeout 120
