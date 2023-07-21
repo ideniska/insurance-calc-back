@@ -59,8 +59,12 @@ WSGI_APPLICATION = "core_conf.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": os.environ.get("DB_ENGINE", "django.db.backends.sqlite3"),
+        "NAME": os.environ.get("PGDATABASE", os.path.join(BASE_DIR, "db.sqlite3")),
+        "USER": os.environ.get("PGUSER", "user"),
+        "PASSWORD": os.environ.get("PGPASSWORD", "password"),
+        "HOST": os.environ.get("PGHOST", "localhost"),
+        "PORT": os.environ.get("POSTGRES_PORT", "5432"),
     }
 }
 
