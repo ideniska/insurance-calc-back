@@ -1,1 +1,1 @@
-web: python manage.py makemigrations && python manage.py migrate && gunicorn core_conf.wsgi --timeout 120
+web: python manage.py makemigrations && python manage.py migrate && python manage.py loaddata data.json && gunicorn core_conf.wsgi --timeout 120
